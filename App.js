@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { EnterNumberScreen } from './components/EnterNumberScreen';
 import { MoreOrLessScreen } from './components/MoreOrLessScreen';
-import { ResultsScreen } from './components/ResultsScreen';
+import { ResultsScreen } from './components/screens/ResultsScreen';
 
 export default function App() {
   return (
