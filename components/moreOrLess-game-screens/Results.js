@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function ResultsScreen({correctAnswers}) {
+export function Results({correctAnswers}) {
     return (
         <View style={styles.container}>
 

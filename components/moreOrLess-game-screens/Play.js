@@ -2,19 +2,19 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "../Button";
 import { colorsPalette } from "../../utils/colorsPalette";
 
-export function MoreOrLessScreen() {
+export function Play() {
     return(
         <View style={styles.container}>
-            <Text style={styles.heading}>число нижче є більшим чи меншим за попереднє?</Text>
+            <Text style={styles.heading}>Is this number bigger or smaller than previous?</Text>
             <Text style={styles.randomNumber}>45</Text>
             <View style={styles.buttonsContainer}>
                 <Button 
-                    text='менше'
+                    text='smaller'
                     containerStyles={styles.lessButtonContainer}
                     textStyles={styles.lessButtonText}
                 />
                 <Button 
-                    text='більше'
+                    text='bigger'
                     containerStyles={styles.moreButtonContainer}
                     textStyles={styles.moreButtonText}
                 />

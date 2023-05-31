@@ -1,19 +1,19 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function EnterNumberScreen() {
+export function StartGame() {
     return(
         <View style={styles.container}>
 
-            <Text style={styles.heading}>Введіть число від 1 до 99</Text>
+            <Text style={styles.heading}>Remember the number below</Text>
 
-            <TextInput style={styles.input}/>
+            <Text style={styles.number}>123</Text>
 
             <Button 
                 containerStyles={styles.buttonContainer}
                 textStyles={styles.buttonText}
-                text='Почати гру'
+                text='Start'
             />
 
         </View>
@@ -33,15 +33,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textTransform: 'uppercase',
     },
-    input: {
+    number: {
         marginVertical: 30,
-        height: 82,
-        width: '100%',
         textAlign: 'center',
-        fontSize: 70,
-        borderRadius: 40,
-        borderColor: colorsPalette.black,
-        borderWidth: 1,
+        fontSize: 50,
     },
     buttonContainer: {
         borderRadius: 40,

@@ -1,15 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { EnterNumberScreen } from './components/moreOrLess-game-screens/EnterNumberScreen';
-import { MoreOrLessScreen } from './components/moreOrLess-game-screens/MoreOrLessScreen';
-import { ResultsScreen } from './components/moreOrLess-game-screens/ResultsScreen';
+import { useState } from 'react';
+import { MoreOrLess } from './components/games/MoreOrLess';
 
 export default function App() {
+
+  const [currentGame, setCurrentGame] = useState('MoreOrLess');
+
+  const displayGame = (gameName) => {
+      if(gameName === currentGame) {
+          return true;
+      };
+      return false;
+  }
+
   return (
     <View style={styles.container}>
-      {<EnterNumberScreen />}
-      {/* <MoreOrLessScreen /> */}
-      {/* <ResultsScreen correctAnswers={4}/> */}
+      {displayGame('MoreOrLess') && <MoreOrLess />}
       <StatusBar style="auto" />
     </View>
   );
