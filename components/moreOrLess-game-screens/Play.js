@@ -5,8 +5,7 @@ import { useState } from "react";
 
 export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnswers, setTotalAnswers, initialNumber, min, max}) {
 
-    const [currentNumber, setCurrentNumber] = useState(Math.floor(Math.random() * (max - min + 1) + min));
-    const [previousNumber, setPreviousNumber] = useState(initialNumber)
+    const [isPreviousNumberShown, setIsPreviousNumberShown] = useState(false);
     const [gameNumbers, setGameNumbers] = useState({prev: initialNumber, cur: Math.floor(Math.random() * (max - min + 1) + min)})
 
     const setNewCurrentNumber = () => {
@@ -41,16 +40,22 @@ export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnsw
         <View style={styles.container}>
             <Text>Total: {totalAnswers} Correct: {correctAnswers}</Text>
             <Text style={styles.heading}>Is this number bigger or smaller than previous?</Text>
-            <Text style={styles.randomNumber}>{gameNumbers.cur}</Text>
+            <View style={styles.numbersContainer}>
+                <Text style={styles.randomNumber}>{gameNumbers.cur}</Text>
+                {isPreviousNumberShown && <>
+                    <Text style={styles.randomNumber}>?</Text>
+                    <Text style={styles.randomNumber}>{gameNumbers.prev}</Text>
+                </>}
+            </View>
             <View style={styles.buttonsContainer}>
                 <Button 
-                    text='smaller'
+                    text={isPreviousNumberShown ? '<' : 'smaller'}
                     containerStyles={styles.lessButtonContainer}
                     textStyles={styles.lessButtonText}
                     onPress={pressLess}
                 />
                 <Button 
-                    text='bigger'
+                    text={isPreviousNumberShown ? '>' : 'bigger'}
                     containerStyles={styles.moreButtonContainer}
                     textStyles={styles.moreButtonText}
                     onPress={pressMore}
@@ -61,6 +66,12 @@ export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnsw
                 containerStyles={styles.finishButtonContainer}
                 textStyles={styles.finishButtonText}
                 onPress={finishGame}
+            />
+            <Button 
+                text={isPreviousNumberShown ? 'hide previous' : 'show previous'}
+                containerStyles={styles.finishButtonContainer}
+                textStyles={styles.finishButtonText}
+                onPress={setIsPreviousNumberShown.bind(this, !isPreviousNumberShown)}
             />
         </View>
     )
@@ -79,14 +90,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textTransform: 'uppercase',
     },
+    numbersContainer: {
+        flexDirection: 'row'
+    },
     randomNumber: {
         marginVertical: 30,
         minWidth: 90,
         textAlign: 'center',
         fontSize: 70,
-        borderRadius: 40,
-        borderColor: colorsPalette.black,
-        borderWidth: 1,
     },
     buttonsContainer: {
         flexDirection: 'row',
