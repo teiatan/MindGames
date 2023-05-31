@@ -5,16 +5,17 @@ import { useState } from "react";
 
 export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnswers, setTotalAnswers, initialNumber, min, max, hints, setHints}) {
 
-    const [isPreviousNumberShown, setIsPreviousNumberShown] = useState(false);
-    const [gameNumbers, setGameNumbers] = useState({prev: initialNumber, cur: Math.floor(Math.random() * (max - min + 1) + min)})
-    const setNewCurrentNumber = () => {
+    const setNewCurrentNumber = (notEqual = gameNumbers.cur) => {
         let number;
         do {
             number = Math.floor(Math.random() * (max - min + 1) + min)
-        } while (number === gameNumbers.cur);
+        } while (number === notEqual);
         return number;
     };
 
+    const [isPreviousNumberShown, setIsPreviousNumberShown] = useState(false);
+    const [gameNumbers, setGameNumbers] = useState({prev: initialNumber, cur: setNewCurrentNumber(initialNumber)})
+    
     const pressLess = () => {
         setTotalAnswers(prev => prev+1);
         if(gameNumbers.prev > gameNumbers.cur) {
