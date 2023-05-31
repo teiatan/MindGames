@@ -66,6 +66,8 @@ export function MoreOrLess() {
                     changeScreen={changeScreen} 
                     correctAnswers={correctAnswers}
                     totalAnswers={totalAnswers}
+                    setTotalAnswers={setTotalAnswers}
+                    setCorrectAnswers={setCorrectAnswers}
                     
                 />
             }

@@ -2,7 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function Results({changeScreen, correctAnswers, totalAnswers}) {
+export function Results({changeScreen, correctAnswers, totalAnswers, setTotalAnswers, setCorrectAnswers}) {
+    
+    const onNextGamePress = () => {
+        changeScreen('StartSettings');
+        setTotalAnswers(0);
+        setCorrectAnswers(0);
+    } 
+    
     return (
         <View style={styles.container}>
 
@@ -18,7 +25,7 @@ export function Results({changeScreen, correctAnswers, totalAnswers}) {
                 containerStyles={styles.buttonContainer}
                 textStyles={styles.buttonText}
                 text='Нова гра'
-                onPress={changeScreen.bind(this, 'StartSettings')}
+                onPress={onNextGamePress}
             />
         </View>
     );
