@@ -24,17 +24,33 @@ export function MoreOrLess() {
         setCurrentScreen(screenName);
     };
 
+    const chooseNumbersGange = (min, max) => {
+        const number = Math.floor(Math.random() * (max - min + 1) + min);
+        setInitialNumber(number);
+    }
+
     return(
         <View style={styles.gameContainer}>
-            {displayScreen('StartSettings') && <StartSettings changeScreen={changeScreen}/>}
-            {displayScreen('StartGame') && <StartGame changeScreen={changeScreen}/>}
+            {displayScreen('StartSettings') && 
+                <StartSettings 
+                    changeScreen={changeScreen}
+                    chooseNumbersGange={chooseNumbersGange}
+                />
+            }
+            {displayScreen('StartGame') && 
+                <StartGame 
+                    changeScreen={changeScreen}
+                    initialNumber={initialNumber}
+                />
+            }
             {displayScreen('Play') && <Play changeScreen={changeScreen}/>}
             {displayScreen('Results') && 
                 <Results 
                     changeScreen={changeScreen} 
                     correctAnswers={correctAnswers}
                     totalAnswers={totalAnswers}
-                />}
+                />
+            }
         </View>
     );
 };

@@ -2,9 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function StartGame({changeScreen}) {
+export function StartGame({changeScreen, initialNumber}) {
 
-    const randomNumber = Math.random();
 
     const playGame = () => {
         changeScreen('Play')
@@ -19,7 +18,7 @@ export function StartGame({changeScreen}) {
 
             <Text style={styles.heading}>Remember the number below</Text>
 
-            <Text style={styles.number}>{randomNumber}</Text>
+            <Text style={styles.number}>{initialNumber}</Text>
 
             <View style={styles.buttonsContainer}>
                 <Button 

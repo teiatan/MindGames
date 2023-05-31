@@ -2,9 +2,10 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function StartSettings({changeScreen}) {
+export function StartSettings({changeScreen, chooseNumbersGange}) {
 
-    const chooseNumberOption = () => {
+    const chooseNumberOption = (min, max) => {
+        chooseNumbersGange(min, max);
         changeScreen('StartGame');
     }
 
@@ -18,25 +19,25 @@ export function StartSettings({changeScreen}) {
                     text='from 1 to 9'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.pakistanGreen}}
                     textStyles={styles.buttonText}
-                    onPress={chooseNumberOption}
+                    onPress={chooseNumberOption.bind(this, 1, 9)}
                 />
                 <Button 
                     text='from 1 to 99'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.verdigris}}
                     textStyles={styles.buttonText}
-                    onPress={chooseNumberOption}
+                    onPress={chooseNumberOption.bind(this, 1, 99)}
                 />
                 <Button 
-                    text='from 1 to 999'
+                    text='from -9 to 9'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.indigoDye}}
                     textStyles={styles.buttonText}
-                    onPress={chooseNumberOption}
+                    onPress={chooseNumberOption.bind(this, -9, 9)}
                 />
                 <Button 
-                    text='any'
+                    text='from -99 to 99'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.brightPink}}
                     textStyles={styles.buttonText}
-                    onPress={chooseNumberOption}
+                    onPress={chooseNumberOption.bind(this, -99, 99)}
                 />
             </View>
 
