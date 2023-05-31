@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { colorsPalette } from "../utils/colorsPalette";
-import { Button } from "./Button";
+import { colorsPalette } from "../../utils/colorsPalette";
+import { Button } from "../Button";
 
 export function EnterNumberScreen() {
     return(
