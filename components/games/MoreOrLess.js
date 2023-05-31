@@ -6,13 +6,14 @@ import { StartGame } from "../moreOrLess-game-screens/StartGame";
 import { Play } from "../moreOrLess-game-screens/Play";
 import { Results } from "../moreOrLess-game-screens/Results";
 
-export function MoreOrLess() {
+export function MoreOrLess({setCurrentGame}) {
 
     const [currentScreen, setCurrentScreen] = useState('StartSettings');
     const [numbersRange, setNumbersRange] = useState({min: 0, max: 0});
     const [initialNumber, setInitialNumber] = useState('');
     const [totalAnswers, setTotalAnswers] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [hints, setHints] = useState(0);
 
     const displayScreen = (screenName) => {
         if(screenName === currentScreen) {
@@ -38,6 +39,7 @@ export function MoreOrLess() {
                 <StartSettings 
                     changeScreen={changeScreen}
                     chooseNumbersGange={chooseNumbersGange}
+                    setCurrentGame={setCurrentGame}
                 />
             }
 
@@ -53,8 +55,10 @@ export function MoreOrLess() {
                     changeScreen={changeScreen}
                     correctAnswers={correctAnswers}
                     totalAnswers={totalAnswers}
+                    hints={hints}
                     setTotalAnswers={setTotalAnswers}
                     setCorrectAnswers={setCorrectAnswers}
+                    setHints={setHints}
                     initialNumber={initialNumber}
                     min={numbersRange.min}
                     max={numbersRange.max}
@@ -66,9 +70,11 @@ export function MoreOrLess() {
                     changeScreen={changeScreen} 
                     correctAnswers={correctAnswers}
                     totalAnswers={totalAnswers}
+                    hints={hints}
                     setTotalAnswers={setTotalAnswers}
                     setCorrectAnswers={setCorrectAnswers}
-                    
+                    setCurrentGame={setCurrentGame}
+                    setHints={setHints}
                 />
             }
         </View>

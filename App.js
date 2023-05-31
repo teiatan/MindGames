@@ -18,7 +18,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {displayGame('GamesNavigation') && <GamesNavigation setCurrentGame={setCurrentGame}/>}
-      {displayGame('MoreOrLess') && <MoreOrLess />}
+      {displayGame('MoreOrLess') && <MoreOrLess setCurrentGame={setCurrentGame}/>}
       <StatusBar style="auto" />
     </View>
   );

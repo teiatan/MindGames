@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function StartSettings({changeScreen, chooseNumbersGange}) {
+export function StartSettings({changeScreen, chooseNumbersGange, setCurrentGame}) {
 
     const chooseNumberOption = (min, max) => {
         chooseNumbersGange(min, max);
@@ -45,6 +45,7 @@ export function StartSettings({changeScreen, chooseNumbersGange}) {
                 containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.darkGreen}}
                 textStyles={styles.buttonText}
                 text='back to games'
+                onPress={setCurrentGame.bind(this, 'GamesNavigation')}
             />
 
         </View>

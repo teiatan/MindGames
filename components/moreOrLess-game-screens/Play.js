@@ -3,11 +3,10 @@ import { Button } from "../Button";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { useState } from "react";
 
-export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnswers, setTotalAnswers, initialNumber, min, max}) {
+export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnswers, setTotalAnswers, initialNumber, min, max, hints, setHints}) {
 
     const [isPreviousNumberShown, setIsPreviousNumberShown] = useState(false);
     const [gameNumbers, setGameNumbers] = useState({prev: initialNumber, cur: Math.floor(Math.random() * (max - min + 1) + min)})
-
     const setNewCurrentNumber = () => {
         let number;
         do {
@@ -21,7 +20,8 @@ export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnsw
         if(gameNumbers.prev > gameNumbers.cur) {
             setCorrectAnswers(prev => prev+1);
         };
-        setGameNumbers(prev => ({prev: prev.cur, cur: setNewCurrentNumber()}))
+        setGameNumbers(prev => ({prev: prev.cur, cur: setNewCurrentNumber()}));
+        setIsPreviousNumberShown(false);
     };
 
     const pressMore = () => {
@@ -29,17 +29,23 @@ export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnsw
         if(gameNumbers.prev < gameNumbers.cur) {
             setCorrectAnswers(prev => prev+1);
         };
-        setGameNumbers(prev => ({prev: prev.cur, cur: setNewCurrentNumber()}))
+        setGameNumbers(prev => ({prev: prev.cur, cur: setNewCurrentNumber()}));
+        setIsPreviousNumberShown(false);
     };
 
     const finishGame = () => {
         changeScreen('Results');
     };
 
+    const showPrevious = () => {
+        setIsPreviousNumberShown(true);
+        setHints(prev => prev+1);
+    };
+
     return(
         <View style={styles.container}>
-            <Text>Total: {totalAnswers} Correct: {correctAnswers}</Text>
-            <Text style={styles.heading}>Is this number bigger or smaller than previous?</Text>
+            <Text>Total: {totalAnswers} Correct: {correctAnswers} Hints: {hints}</Text>
+            <Text style={styles.heading}>{!isPreviousNumberShown && ('Is this number bigger or smaller than previous')}</Text>
             <View style={styles.numbersContainer}>
                 <Text style={styles.randomNumber}>{gameNumbers.cur}</Text>
                 {isPreviousNumberShown && <>
@@ -67,12 +73,12 @@ export function Play({changeScreen, correctAnswers, setCorrectAnswers, totalAnsw
                 textStyles={styles.finishButtonText}
                 onPress={finishGame}
             />
-            <Button 
-                text={isPreviousNumberShown ? 'hide previous' : 'show previous'}
+            {!isPreviousNumberShown && <Button 
+                text='show previous'
                 containerStyles={styles.finishButtonContainer}
                 textStyles={styles.finishButtonText}
-                onPress={setIsPreviousNumberShown.bind(this, !isPreviousNumberShown)}
-            />
+                onPress={showPrevious}
+            />}
         </View>
     )
 };
