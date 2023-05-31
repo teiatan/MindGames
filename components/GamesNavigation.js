@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Button } from "./Button";
 import { colorsPalette } from "../utils/colorsPalette";
 
@@ -7,6 +7,7 @@ export function GamesNavigation({setCurrentGame}) {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.heading}>Games:</Text>
             <View style={styles.buttonsGroupContainer}>
                 <Button 
                     text='More or Less'
@@ -26,6 +27,13 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         justifyContent: 'center',
         padding: 16
+    },
+    heading: {
+        color: colorsPalette.bistre,
+        fontSize: 40,
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        textAlign: 'center'
     },
     buttonsGroupContainer: {
         marginVertical: 30
