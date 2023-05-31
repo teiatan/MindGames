@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     input: {
         marginVertical: 30,
-        height: '20%',
+        height: 82,
         width: '100%',
         textAlign: 'center',
         fontSize: 70,

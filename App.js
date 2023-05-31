@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { EnterNumberScreen } from './components/EnterNumberScreen';
+import { MoreOrLessScreen } from './components/MoreOrLessScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <EnterNumberScreen />
+      {/* <EnterNumberScreen /> */}
+      <MoreOrLessScreen />
       <StatusBar style="auto" />
     </View>
   );
