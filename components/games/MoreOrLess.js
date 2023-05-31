@@ -5,6 +5,8 @@ import { StartSettings } from "../moreOrLess-game-screens/StartSettings";
 import { StartGame } from "../moreOrLess-game-screens/StartGame";
 import { Play } from "../moreOrLess-game-screens/Play";
 import { Results } from "../moreOrLess-game-screens/Results";
+import { LinearGradient } from "expo-linear-gradient";
+import { colorsPalette } from "../../utils/colorsPalette";
 
 export function MoreOrLess({setCurrentGame}) {
 
@@ -33,7 +35,10 @@ export function MoreOrLess({setCurrentGame}) {
     }
 
     return(
-        <View style={styles.gameContainer}>
+        <LinearGradient 
+            colors={[colorsPalette.snow, colorsPalette.almond, colorsPalette.cinereous, colorsPalette.bistre, colorsPalette.black]} 
+            style={styles.gameContainer}
+        >
 
             {displayScreen('StartSettings') && 
                 <StartSettings 
@@ -77,7 +82,7 @@ export function MoreOrLess({setCurrentGame}) {
                     setHints={setHints}
                 />
             }
-        </View>
+        </LinearGradient>
     );
 };
 
