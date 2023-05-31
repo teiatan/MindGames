@@ -2,7 +2,12 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function StartSettings() {
+export function StartSettings({changeScreen}) {
+
+    const chooseNumberOption = () => {
+        changeScreen('StartGame');
+    }
+
     return(
         <View style={styles.container}>
 
@@ -13,28 +18,32 @@ export function StartSettings() {
                     text='from 1 to 9'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.pakistanGreen}}
                     textStyles={styles.buttonText}
+                    onPress={chooseNumberOption}
                 />
                 <Button 
                     text='from 1 to 99'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.verdigris}}
                     textStyles={styles.buttonText}
+                    onPress={chooseNumberOption}
                 />
                 <Button 
                     text='from 1 to 999'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.indigoDye}}
                     textStyles={styles.buttonText}
+                    onPress={chooseNumberOption}
                 />
                 <Button 
                     text='any'
                     containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.brightPink}}
                     textStyles={styles.buttonText}
+                    onPress={chooseNumberOption}
                 />
             </View>
 
             <Button 
                 containerStyles={{...styles.buttonContainer, backgroundColor: colorsPalette.darkGreen}}
                 textStyles={styles.buttonText}
-                text='Почати гру'
+                text='back to games'
             />
 
         </View>

@@ -2,7 +2,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { Button } from "../Button";
 import { colorsPalette } from "../../utils/colorsPalette";
 
-export function Play() {
+export function Play({changeScreen}) {
+
+    const finishGame = () => {
+        changeScreen('Results');
+    }
+
     return(
         <View style={styles.container}>
             <Text style={styles.heading}>Is this number bigger or smaller than previous?</Text>
@@ -19,6 +24,12 @@ export function Play() {
                     textStyles={styles.moreButtonText}
                 />
             </View>
+            <Button 
+                text='finish'
+                containerStyles={styles.finishButtonContainer}
+                textStyles={styles.finishButtonText}
+                onPress={finishGame}
+            />
         </View>
     )
 };
@@ -63,6 +74,15 @@ const styles = StyleSheet.create({
         backgroundColor: colorsPalette.cinereous,
     },
     lessButtonText: {
+        padding: 10,
+        fontSize: 20,
+        textTransform: 'uppercase',
+    },
+    finishButtonContainer: {
+        borderRadius: 40,
+        backgroundColor: colorsPalette.cinereous,
+    },
+    finishButtonText: {
         padding: 10,
         fontSize: 20,
         textTransform: 'uppercase',

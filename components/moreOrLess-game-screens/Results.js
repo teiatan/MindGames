@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { colorsPalette } from "../../utils/colorsPalette";
 import { Button } from "../Button";
 
-export function Results({correctAnswers}) {
+export function Results({changeScreen, correctAnswers, totalAnswers}) {
     return (
         <View style={styles.container}>
 
@@ -10,7 +10,7 @@ export function Results({correctAnswers}) {
 
             <View style={styles.resultContainer}>
                 <Text style={styles.result}> Правильно </Text>
-                <Text style={styles.result}> {correctAnswers} з 5 </Text>
+                <Text style={styles.result}> {correctAnswers} з {totalAnswers} </Text>
                 <Text style={styles.result}> відповідей </Text>
             </View>
 
@@ -18,6 +18,7 @@ export function Results({correctAnswers}) {
                 containerStyles={styles.buttonContainer}
                 textStyles={styles.buttonText}
                 text='Нова гра'
+                onPress={changeScreen.bind(this, 'StartSettings')}
             />
         </View>
     );
