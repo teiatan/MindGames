@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import { useState } from "react";
 import { StartSettings } from "../moreOrLess-game-screens/StartSettings";
@@ -45,49 +45,50 @@ export function MoreOrLess({setCurrentGame}) {
                 style={styles.gameContainer}
                 imageStyle={styles.backgroundImage}
             >
+                <SafeAreaView style={styles.gameContainer}>
+                    {displayScreen('StartSettings') && 
+                        <StartSettings 
+                            changeScreen={changeScreen}
+                            chooseNumbersGange={chooseNumbersGange}
+                            setCurrentGame={setCurrentGame}
+                        />
+                    }
 
-                {displayScreen('StartSettings') && 
-                    <StartSettings 
-                        changeScreen={changeScreen}
-                        chooseNumbersGange={chooseNumbersGange}
-                        setCurrentGame={setCurrentGame}
-                    />
-                }
+                    {displayScreen('StartGame') && 
+                        <StartGame 
+                            changeScreen={changeScreen}
+                            initialNumber={initialNumber}
+                        />
+                    }
 
-                {displayScreen('StartGame') && 
-                    <StartGame 
-                        changeScreen={changeScreen}
-                        initialNumber={initialNumber}
-                    />
-                }
+                    {displayScreen('Play') && 
+                        <Play 
+                            changeScreen={changeScreen}
+                            correctAnswers={correctAnswers}
+                            totalAnswers={totalAnswers}
+                            hints={hints}
+                            setTotalAnswers={setTotalAnswers}
+                            setCorrectAnswers={setCorrectAnswers}
+                            setHints={setHints}
+                            initialNumber={initialNumber}
+                            min={numbersRange.min}
+                            max={numbersRange.max}
+                        />
+                    }
 
-                {displayScreen('Play') && 
-                    <Play 
-                        changeScreen={changeScreen}
-                        correctAnswers={correctAnswers}
-                        totalAnswers={totalAnswers}
-                        hints={hints}
-                        setTotalAnswers={setTotalAnswers}
-                        setCorrectAnswers={setCorrectAnswers}
-                        setHints={setHints}
-                        initialNumber={initialNumber}
-                        min={numbersRange.min}
-                        max={numbersRange.max}
-                    />
-                }
-
-                {displayScreen('Results') && 
-                    <Results 
-                        changeScreen={changeScreen} 
-                        correctAnswers={correctAnswers}
-                        totalAnswers={totalAnswers}
-                        hints={hints}
-                        setTotalAnswers={setTotalAnswers}
-                        setCorrectAnswers={setCorrectAnswers}
-                        setCurrentGame={setCurrentGame}
-                        setHints={setHints}
-                    />
-                }
+                    {displayScreen('Results') && 
+                        <Results 
+                            changeScreen={changeScreen} 
+                            correctAnswers={correctAnswers}
+                            totalAnswers={totalAnswers}
+                            hints={hints}
+                            setTotalAnswers={setTotalAnswers}
+                            setCorrectAnswers={setCorrectAnswers}
+                            setCurrentGame={setCurrentGame}
+                            setHints={setHints}
+                        />
+                    }
+                </SafeAreaView>
             </ImageBackground>
         </LinearGradient>
     );
