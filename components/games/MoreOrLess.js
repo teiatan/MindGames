@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 
 import { useState } from "react";
 import { StartSettings } from "../moreOrLess-game-screens/StartSettings";
@@ -39,49 +39,56 @@ export function MoreOrLess({setCurrentGame}) {
             colors={[colorsPalette.snow, colorsPalette.almond, colorsPalette.cinereous, colorsPalette.bistre, colorsPalette.black]} 
             style={styles.gameContainer}
         >
+            <ImageBackground
+                source={require('../../assets/images/mick-haupt-ePHz9WOME0c-unsplash.jpg')}
+                resizeMode="cover"
+                style={styles.gameContainer}
+                imageStyle={styles.backgroundImage}
+            >
 
-            {displayScreen('StartSettings') && 
-                <StartSettings 
-                    changeScreen={changeScreen}
-                    chooseNumbersGange={chooseNumbersGange}
-                    setCurrentGame={setCurrentGame}
-                />
-            }
+                {displayScreen('StartSettings') && 
+                    <StartSettings 
+                        changeScreen={changeScreen}
+                        chooseNumbersGange={chooseNumbersGange}
+                        setCurrentGame={setCurrentGame}
+                    />
+                }
 
-            {displayScreen('StartGame') && 
-                <StartGame 
-                    changeScreen={changeScreen}
-                    initialNumber={initialNumber}
-                />
-            }
+                {displayScreen('StartGame') && 
+                    <StartGame 
+                        changeScreen={changeScreen}
+                        initialNumber={initialNumber}
+                    />
+                }
 
-            {displayScreen('Play') && 
-                <Play 
-                    changeScreen={changeScreen}
-                    correctAnswers={correctAnswers}
-                    totalAnswers={totalAnswers}
-                    hints={hints}
-                    setTotalAnswers={setTotalAnswers}
-                    setCorrectAnswers={setCorrectAnswers}
-                    setHints={setHints}
-                    initialNumber={initialNumber}
-                    min={numbersRange.min}
-                    max={numbersRange.max}
-                />
-            }
+                {displayScreen('Play') && 
+                    <Play 
+                        changeScreen={changeScreen}
+                        correctAnswers={correctAnswers}
+                        totalAnswers={totalAnswers}
+                        hints={hints}
+                        setTotalAnswers={setTotalAnswers}
+                        setCorrectAnswers={setCorrectAnswers}
+                        setHints={setHints}
+                        initialNumber={initialNumber}
+                        min={numbersRange.min}
+                        max={numbersRange.max}
+                    />
+                }
 
-            {displayScreen('Results') && 
-                <Results 
-                    changeScreen={changeScreen} 
-                    correctAnswers={correctAnswers}
-                    totalAnswers={totalAnswers}
-                    hints={hints}
-                    setTotalAnswers={setTotalAnswers}
-                    setCorrectAnswers={setCorrectAnswers}
-                    setCurrentGame={setCurrentGame}
-                    setHints={setHints}
-                />
-            }
+                {displayScreen('Results') && 
+                    <Results 
+                        changeScreen={changeScreen} 
+                        correctAnswers={correctAnswers}
+                        totalAnswers={totalAnswers}
+                        hints={hints}
+                        setTotalAnswers={setTotalAnswers}
+                        setCorrectAnswers={setCorrectAnswers}
+                        setCurrentGame={setCurrentGame}
+                        setHints={setHints}
+                    />
+                }
+            </ImageBackground>
         </LinearGradient>
     );
 };
@@ -89,8 +96,13 @@ export function MoreOrLess({setCurrentGame}) {
 const styles = StyleSheet.create({
     gameContainer: {
         flex:1,
-        backgroundColor: '#fff',
         alignItems: 'stretch',
         justifyContent: 'center',
+    },
+    rootScreen: {
+        flex: 1,
+    },
+    backgroundImage: {
+        opacity: 0.15
     }
 })
